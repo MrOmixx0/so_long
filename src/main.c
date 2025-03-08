@@ -1,15 +1,18 @@
+#include "so_long.h"
 #include <stdlib.h>
-#include <..mlx/mlx.h> // in cluster pc change that to the minilibx path (ask about it)
-#include <../includes/so_long.h>
 
-int main (int ac, char *av[])
+int main(int argc, char **argv)
 {
-	void *mlx;
-	void *win;
+	t_game  game;
 
-	mlx = mlx.init();
-	win = mlx_new_window(mlx, 1024, 768, "so_long");
-
-	mlx_loop(mlx);
+	if (argc != 2)
+		exit_game(NULL, "Error: Provide a .ber map file\n");
+	game.mlx_ptr = mlx_init();
+	if (!game.mlx_ptr)
+		exit_game(NULL, "Error: MiniLibX initialization failed\n");
+	parse_map(argv[1], &game);
+	init_game(&game);
+	mlx_key_hook(game.win_ptr, handle_key, &game);
+	mlx_loop(game.mlx_ptr);
 	return (0);
 }
