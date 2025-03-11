@@ -16,7 +16,7 @@ OBJ_PATH =	obj
 
 LIB_NAME =	libft.a
 
-SRC_NAME =	game_init.c main.c map_parser.c render.c input.c utils.c
+SRC_NAME =	game_init.c main.c map_parser.c render.c input.c utils.c validate_map.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

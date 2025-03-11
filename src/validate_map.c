@@ -1,4 +1,18 @@
-static void check_chars(t_game *game, int *p_count, int *e_count, int *c_count)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/11 03:28:14 by mel-hajj          #+#    #+#             */
+/*   Updated: 2025/03/11 03:37:39 by mel-hajj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long.h"
+
+void check_chars(t_game *game, int *p_count, int *e_count, int *c_count)
 {
     int     i;
     int     j;
@@ -23,7 +37,7 @@ static void check_chars(t_game *game, int *p_count, int *e_count, int *c_count)
     }
 }
 
-static void check_walls(t_game *game, int height, int width)
+void check_walls(t_game *game, int height, int width)
 {
     int     i;
 
@@ -43,10 +57,10 @@ static void check_walls(t_game *game, int height, int width)
     }
 }
 
-static void validate_map(t_game *game)
+void validate_map(t_game *game)
 {
     int     height;
-    int     width;
+    size_t	width;
     int     i;
     int     p_count;
     int     e_count;

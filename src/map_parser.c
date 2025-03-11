@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_parser.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/11 03:28:55 by mel-hajj          #+#    #+#             */
+/*   Updated: 2025/03/11 03:47:59 by mel-hajj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 #include <unistd.h>
 
@@ -27,6 +39,7 @@ static void store_map(char *file, t_game *game, int lines)
     int     fd;
     int     i;
     char    *line;
+	char	*temp;
 
     fd = open(file, O_RDONLY);
     if (fd < 0)
@@ -38,6 +51,10 @@ static void store_map(char *file, t_game *game, int lines)
     line = get_next_line(fd);
     while (line)
     {
+		temp = line;
+		while (*temp && *temp != '\n')
+			temp++;
+		*temp = '\0';
         game->map[i] = line;
         i++;
         line = get_next_line(fd);
@@ -51,8 +68,8 @@ void    parse_map(char *file, t_game *game)
     int     lines;
 
     lines = count_lines(file);
-    if (lines < 3)  // Minimum 3x3 map for walls + content
+    if (lines < 3)
         exit_game(NULL, "Error: Map too small\n");
     store_map(file, game, lines);
-    validate_map(game);  // To be implemented next
+    validate_map(game);
 }
