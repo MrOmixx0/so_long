@@ -12,24 +12,24 @@
 
 #include "so_long.h"
 
-int close_window(t_game *game)
+int	close_window(t_game *game)
 {
 	exit_game(game, "Window closed\n");
 	return (0);
 }
 
-void check_extention(char *file)
+void	check_extention(char *file)
 {
 	int	len;
 
 	len = ft_strlen(file);
-	if(len < 4 || ft_strncmp(file + len - 4, ".ber", 4) != 0)
+	if (len < 4 || ft_strncmp(file + len - 4, ".ber", 4) != 0)
 		exit_game(NULL, "Error: File must have .ber extension\n");
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_game  game;
+	t_game	game;
 
 	if (argc != 2)
 		exit_game(NULL, "Error: Provide a .ber map file\n");

@@ -13,19 +13,19 @@
 #include "so_long.h"
 #include <stdlib.h>
 
-static void free_map(char **map)
+static void	free_map(char **map)
 {
-    int     i;
+	int	i;
 
-    if (!map)
-        return ;
-    i = 0;
-    while (map[i])
-    {
-        free(map[i]);
-        i++;
-    }
-    free(map);
+	if (!map)
+		return ;
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }
 
 void	exit_game(t_game *game, char *msg)
@@ -39,5 +39,5 @@ void	exit_game(t_game *game, char *msg)
 		if (game->map)
 			free_map(game->map);
 	}
-    exit(1);
+	exit(1);
 }
