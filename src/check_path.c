@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_path.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/22 04:31:54 by mel-hajj          #+#    #+#             */
+/*   Updated: 2025/03/22 04:36:51 by mel-hajj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static char	**duplicate_map(char **map)
@@ -80,7 +92,7 @@ void	check_path(t_game *game)
 		free(map_copy);
 		exit_game(game, "Error: No valid path to win\n");
 	}
-	map_copy2 = duplicate_map(game->map); // Fresh map for Phase 2
+	map_copy2 = duplicate_map(game->map);
 	flood_fill(map_copy2, last_c_x, last_c_y, &collectibles, '1');
 	i = 0;
 	while (map_copy2[i])
