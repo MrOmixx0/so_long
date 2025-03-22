@@ -10,7 +10,7 @@ OBJ_PATH =	obj
 MLX_PATH =	mlx
 
 LIB_NAME =	libft.a
-SRC_NAME =	game_init.c main.c map_parser.c render.c input.c utils.c validate_map.c
+SRC_NAME =	game_init.c main.c map_parser.c render.c input.c utils.c validate_map.c check_path.c
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 INC =	libft/include/libft.h 			\

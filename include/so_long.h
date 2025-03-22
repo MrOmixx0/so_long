@@ -36,5 +36,7 @@ void	render_map(t_game *game);
 int		handle_key(int keycode, t_game *game);
 void	exit_game(t_game *game, char *msg);
 void	validate_map(t_game *game);
+void	check_path(t_game *game);
+void	check_extension(char *file);
 
 #endif
