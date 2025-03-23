@@ -6,7 +6,7 @@
 /*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 03:48:08 by mel-hajj          #+#    #+#             */
-/*   Updated: 2025/03/23 03:42:29 by mel-hajj         ###   ########.fr       */
+/*   Updated: 2025/03/23 05:36:58 by mel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ typedef struct s_game
 	int		collectibles;
 	int		exit_x;
 	int		exit_y;
+	void	*wall_img;
+	void	*floor_img;
+	void	*player_img;
+	void	*collect_img;
+	void	*exit_img;
+	int		e_count;
+	int		p_count;
+	int		c_count;
 }	t_game;
 
 void	parse_map(char *file, t_game *game);
@@ -38,7 +46,9 @@ void	render_map(t_game *game);
 int		handle_key(int keycode, t_game *game);
 void	exit_game(t_game *game, char *msg);
 void	validate_map(t_game *game);
+int		close_window(t_game *game);
 void	check_path(t_game *game);
 void	check_extension(char *file);
+void	free_map(char **map);
 
 #endif

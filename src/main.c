@@ -6,17 +6,11 @@
 /*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:28:51 by mel-hajj          #+#    #+#             */
-/*   Updated: 2025/03/11 12:25:12 by mel-hajj         ###   ########.fr       */
+/*   Updated: 2025/03/23 04:54:43 by mel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	close_window(t_game *game)
-{
-	exit_game(game, "Window closed\n");
-	return (0);
-}
 
 void	check_extention(char *file)
 {

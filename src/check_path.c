@@ -6,7 +6,7 @@
 /*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 04:31:54 by mel-hajj          #+#    #+#             */
-/*   Updated: 2025/03/23 03:37:05 by mel-hajj         ###   ########.fr       */
+/*   Updated: 2025/03/23 05:52:09 by mel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,19 @@ static void	flood_fill(char **map, int x, int y, int *collectibles)
 	flood_fill(map, x, y - 1, collectibles);
 }
 
+static void	finalize_path(t_game *game, char **map_copy, int exit_found,
+		int collectibles)
+{
+	int	i;
+
+	i = 0;
+	while (i >= 0)
+		free(map_copy[i--]);
+	free(map_copy);
+	if (!exit_found || collectibles != 0)
+		exit_game(game, "Error: No valid path to win\n");
+}
+
 void	check_path(t_game *game)
 {
 	char	**map_copy;
@@ -62,7 +75,7 @@ void	check_path(t_game *game)
 	i = 0;
 	exit_found = 0;
 	map_copy = duplicate_map(game->map);
-	collectibles = game->collectibles;
+	collectibles = game->c_count;
 	flood_fill(map_copy, game->player_x, game->player_y, &collectibles);
 	while (map_copy[i])
 	{
@@ -75,9 +88,5 @@ void	check_path(t_game *game)
 		}
 		i++;
 	}
-	while (i >= 0)
-		free(map_copy[i--]);
-	free(map_copy);
-	if (!exit_found || collectibles != 0)
-		exit_game(game, "Error: No valid path to win\n");
+	finalize_path(game, map_copy, exit_found, collectibles);
 }
