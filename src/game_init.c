@@ -6,7 +6,7 @@
 /*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:28:39 by mel-hajj          #+#    #+#             */
-/*   Updated: 2025/03/11 12:43:09 by mel-hajj         ###   ########.fr       */
+/*   Updated: 2025/03/23 03:43:02 by mel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ static void	set_player_and_collectibles(t_game *game)
 			}
 			else if (game->map[i][j] == 'C')
 				game->collectibles++;
+			else if (game->map[i][j] == 'E')
+			{
+				game->exit_x = j;
+				game->exit_y = i;
+			}
 			j++;
 		}
 		i++;
@@ -52,6 +57,4 @@ void	init_game(t_game *game)
 		exit_game(game, "Error: Failed to create window\n");
 	game->moves = 0;
 	set_player_and_collectibles(game);
-	ft_printf("Player at (%i, %i), Collectibles: %i\n", game->player_x,
-		game->player_y, game->collectibles);
 }

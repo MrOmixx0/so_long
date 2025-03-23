@@ -65,8 +65,8 @@ bool	is_valid_map(Map *map)
 		i++;
 	}
 	// Check for exactly one exit, one start position,
-		and at least one collectible
-	if (map->exits != 1 || map->start_positions != 1 || map->collectibles < 1)
+	and at least one collectible if (map->exits != 1
+		|| map->start_positions != 1 || map->collectibles < 1)
 	{
 		return (false);
 	}

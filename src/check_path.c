@@ -6,7 +6,7 @@
 /*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 04:31:54 by mel-hajj          #+#    #+#             */
-/*   Updated: 2025/03/22 04:36:51 by mel-hajj         ###   ########.fr       */
+/*   Updated: 2025/03/23 03:37:05 by mel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,84 +36,48 @@ static char	**duplicate_map(char **map)
 	return (dup);
 }
 
-static void	flood_fill(char **map, int x, int y, int *collectibles,
-		char stop_at)
+static void	flood_fill(char **map, int x, int y, int *collectibles)
 {
-	if (x < 0 || y < 0 || !map[y] || !map[y][x] || map[y][x] == '1'
-		|| map[y][x] == stop_at || map[y][x] == 'X')
+	if (x < 0 || y < 0 || !map[y] || !map[y][x] || map[y][x] == '1')
+		return ;
+	if (map[y][x] == 'X')
 		return ;
 	if (map[y][x] == 'C')
 		(*collectibles)--;
 	map[y][x] = 'X';
-	flood_fill(map, x + 1, y, collectibles, stop_at);
-	flood_fill(map, x - 1, y, collectibles, stop_at);
-	flood_fill(map, x, y + 1, collectibles, stop_at);
-	flood_fill(map, x, y - 1, collectibles, stop_at);
+	flood_fill(map, x + 1, y, collectibles);
+	flood_fill(map, x - 1, y, collectibles);
+	flood_fill(map, x, y + 1, collectibles);
+	flood_fill(map, x, y - 1, collectibles);
 }
 
 void	check_path(t_game *game)
 {
 	char	**map_copy;
-	char	**map_copy2;
 	int		collectibles;
 	int		i;
 	int		j;
 	int		exit_found;
-	int		last_c_x;
-	int		last_c_y;
 
 	i = 0;
 	exit_found = 0;
-	last_c_x = -1;
-	last_c_y = -1;
 	map_copy = duplicate_map(game->map);
 	collectibles = game->collectibles;
-	flood_fill(map_copy, game->player_x, game->player_y, &collectibles, 'E');
-	i = 0;
+	flood_fill(map_copy, game->player_x, game->player_y, &collectibles);
 	while (map_copy[i])
 	{
 		j = 0;
 		while (map_copy[i][j])
 		{
-			if (map_copy[i][j] == 'X' && game->map[i][j] == 'C')
-			{
-				last_c_x = j;
-				last_c_y = i;
-			}
-			j++;
-		}
-		ft_printf("After Phase 1 - Map row %i: %s\n", i, map_copy[i]);
-		i++;
-	}
-	if (collectibles != 0 || last_c_x == -1)
-	{
-		while (--i >= 0)
-			free(map_copy[i]);
-		free(map_copy);
-		exit_game(game, "Error: No valid path to win\n");
-	}
-	map_copy2 = duplicate_map(game->map);
-	flood_fill(map_copy2, last_c_x, last_c_y, &collectibles, '1');
-	i = 0;
-	while (map_copy2[i])
-	{
-		j = 0;
-		while (map_copy2[i][j])
-		{
-			if (map_copy2[i][j] == 'X' && game->map[i][j] == 'E')
+			if (map_copy[i][j] == 'X' && game->map[i][j] == 'E')
 				exit_found = 1;
 			j++;
 		}
-		ft_printf("After Phase 2 - Map row %i: %s\n", i, map_copy2[i]);
 		i++;
 	}
-	ft_printf("Exit found: %i\n", exit_found);
-	while (--i >= 0)
-		free(map_copy[i]);
+	while (i >= 0)
+		free(map_copy[i--]);
 	free(map_copy);
-	while (--i >= 0)
-		free(map_copy2[i]);
-	free(map_copy2);
-	if (!exit_found)
+	if (!exit_found || collectibles != 0)
 		exit_game(game, "Error: No valid path to win\n");
 }

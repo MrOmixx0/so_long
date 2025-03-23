@@ -6,7 +6,7 @@
 /*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 03:48:08 by mel-hajj          #+#    #+#             */
-/*   Updated: 2025/03/11 03:32:22 by mel-hajj         ###   ########.fr       */
+/*   Updated: 2025/03/23 03:42:29 by mel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_game
 	int		player_y;
 	int		moves;
 	int		collectibles;
+	int		exit_x;
+	int		exit_y;
 }	t_game;
 
 void	parse_map(char *file, t_game *game);
