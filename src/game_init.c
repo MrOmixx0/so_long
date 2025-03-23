@@ -6,7 +6,7 @@
 /*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:28:39 by mel-hajj          #+#    #+#             */
-/*   Updated: 2025/03/23 06:01:02 by mel-hajj         ###   ########.fr       */
+/*   Updated: 2025/03/23 08:19:51 by mel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void	set_player(t_game *game)
 	int	j;
 
 	i = 0;
+	game->collectibles = 0;
 	while (game->map[i])
 	{
 		j = 0;
@@ -65,18 +66,15 @@ static void	load_textures(t_game *game, int *width, int *height)
 
 void	init_game(t_game *game)
 {
-	int	width;
-	int	height;
-
-	height = 0;
-	while (game->map[height])
-		height++;
-	width = ft_strlen(game->map[0]);
-	game->win_ptr = mlx_new_window(game->mlx_ptr, width * 32, height * 32,
+	game->height = 0;
+	while (game->map[game->height])
+		game->height++;
+	game->width = ft_strlen(game->map[0]);
+	game->win_ptr = mlx_new_window(game->mlx_ptr, game->width * 32, game->height * 32,
 			"So Long");
 	if (!game->win_ptr)
 		exit_game(game, "Error: Failed to create window\n");
 	game->moves = 0;
 	set_player(game);
-	load_textures(game, &width, &height);
+	load_textures(game, &game->width, &game->height);
 }

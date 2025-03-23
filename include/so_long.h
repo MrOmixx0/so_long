@@ -6,7 +6,7 @@
 /*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 03:48:08 by mel-hajj          #+#    #+#             */
-/*   Updated: 2025/03/23 05:36:58 by mel-hajj         ###   ########.fr       */
+/*   Updated: 2025/03/23 06:50:45 by mel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include "stdlib.h"
+# include "unistd.h"
 # include "mlx.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
@@ -38,6 +39,8 @@ typedef struct s_game
 	int		e_count;
 	int		p_count;
 	int		c_count;
+	int		height;
+	int		width;
 }	t_game;
 
 void	parse_map(char *file, t_game *game);

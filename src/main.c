@@ -6,7 +6,7 @@
 /*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:28:51 by mel-hajj          #+#    #+#             */
-/*   Updated: 2025/03/23 04:54:43 by mel-hajj         ###   ########.fr       */
+/*   Updated: 2025/03/23 08:17:50 by mel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	main(int argc, char **argv)
 	if (!game.mlx_ptr)
 		exit_game(NULL, "Error: MiniLibX initialization failed\n");
 	parse_map(argv[1], &game);
-	validate_map(&game);
 	init_game(&game);
 	check_path(&game);
 	render_map(&game);

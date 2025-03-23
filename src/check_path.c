@@ -6,7 +6,7 @@
 /*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 04:31:54 by mel-hajj          #+#    #+#             */
-/*   Updated: 2025/03/23 05:52:09 by mel-hajj         ###   ########.fr       */
+/*   Updated: 2025/03/23 06:50:50 by mel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ static void	finalize_path(t_game *game, char **map_copy, int exit_found,
 	int	i;
 
 	i = 0;
-	while (i >= 0)
-		free(map_copy[i--]);
+	while (map_copy[i])
+		free(map_copy[i++]);
 	free(map_copy);
 	if (!exit_found || collectibles != 0)
 		exit_game(game, "Error: No valid path to win\n");

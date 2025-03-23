@@ -6,12 +6,11 @@
 /*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:28:55 by mel-hajj          #+#    #+#             */
-/*   Updated: 2025/03/11 03:47:59 by mel-hajj         ###   ########.fr       */
+/*   Updated: 2025/03/23 06:29:34 by mel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <unistd.h>
 
 static int	count_lines(char *file)
 {
