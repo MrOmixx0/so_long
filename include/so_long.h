@@ -6,7 +6,7 @@
 /*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 03:48:08 by mel-hajj          #+#    #+#             */
-/*   Updated: 2025/03/23 06:50:45 by mel-hajj         ###   ########.fr       */
+/*   Updated: 2025/03/24 06:21:07 by mel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_game
 
 void	parse_map(char *file, t_game *game);
 void	init_game(t_game *game);
+void	set_player(t_game *game);
 void	render_map(t_game *game);
 int		handle_key(int keycode, t_game *game);
 void	exit_game(t_game *game, char *msg);
