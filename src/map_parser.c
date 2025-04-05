@@ -20,7 +20,7 @@ static int	count_lines(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		exit_game(NULL, "Error\n Cannot open map file\n");
+		exit_game(NULL, "Error\nCannot open map file\n");
 	lines = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -42,10 +42,10 @@ static void	store_map(char *file, t_game *game, int lines)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		exit_game(game, "Error: Cannot open map file\n");
+		exit_game(game, "Error\nCannot open map file\n");
 	game->map = (char **)malloc(sizeof(char *) * (lines + 1));
 	if (!game->map)
-		exit_game(game, "Error: Memory allocation failed\n");
+		exit_game(game, "Error\nMemory allocation failed\n");
 	i = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -68,7 +68,7 @@ void	parse_map(char *file, t_game *game)
 
 	lines = count_lines(file);
 	if (lines < 3)
-		exit_game(NULL, "Error: Map too small\n");
+		exit_game(NULL, "Error\nMap too small\n");
 	store_map(file, game, lines);
 	validate_map(game);
 }

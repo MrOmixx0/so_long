@@ -26,7 +26,7 @@ void	check_extension(char *file)
 	len = ft_strlen(basename);
 	if (len < 5 || basename[0] == '.' || ft_strncmp(basename + len - 4, ".ber",
 			4) != 0)
-		exit_game(NULL, "Error\n File must have a valid .ber extension\n");
+		exit_game(NULL, "Error\nFile must have a valid .ber extension\n");
 }
 
 int	main(int argc, char **argv)
@@ -35,14 +35,14 @@ int	main(int argc, char **argv)
 
 	memset(&game, 0, sizeof(t_game));
 	if (argc != 2)
-		exit_game(NULL, "Error\n Provide a .ber map file\n");
+		exit_game(NULL, "Error\nProvide a .ber map file\n");
 	check_extension(argv[1]);
 	parse_map(argv[1], &game);
 	set_player(&game);
 	check_path(&game);
 	game.mlx_ptr = mlx_init();
 	if (!game.mlx_ptr)
-		exit_game(NULL, "Error\n MiniLibX initialization failed\n");
+		exit_game(NULL, "Error\nMiniLibX initialization failed\n");
 	init_game(&game);
 	render_map(&game);
 	mlx_key_hook(game.win_ptr, handle_key, &game);

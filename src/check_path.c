@@ -24,12 +24,12 @@ static char	**duplicate_map(char **map)
 		height++;
 	dup = (char **)malloc(sizeof(char *) * (height + 1));
 	if (!dup)
-		exit_game(NULL, "Error\n Memory allocation failed\n");
+		exit_game(NULL, "Error\nMemory allocation failed\n");
 	while (i < height)
 	{
 		dup[i] = ft_strdup(map[i]);
 		if (!dup[i])
-			exit_game(NULL, "Error\n Memory allocation failed\n");
+			exit_game(NULL, "Error\nMemory allocation failed\n");
 		i++;
 	}
 	dup[height] = NULL;
@@ -61,7 +61,7 @@ static void	finalize_path(t_game *game, char **map_copy, int exit_found,
 		free(map_copy[i++]);
 	free(map_copy);
 	if (!exit_found || collectibles != 0)
-		exit_game(game, "Error\n No valid path to win\n");
+		exit_game(game, "Error\nNo valid path to win\n");
 }
 
 void	check_path(t_game *game)

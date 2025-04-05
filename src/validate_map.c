@@ -33,7 +33,7 @@ void	check_chars(t_game *game)
 			else if (game->map[i][j] == 'C')
 				game->c_count++;
 			else if (game->map[i][j] != '0' && game->map[i][j] != '1')
-				exit_game(game, "Error\n Invalid character in map\n");
+				exit_game(game, "Error\nInvalid character in map\n");
 			j++;
 		}
 		i++;
@@ -48,14 +48,14 @@ void	check_walls(t_game *game, int height, int width)
 	while (i < width)
 	{
 		if (game->map[0][i] != '1' || game->map[height - 1][i] != '1')
-			exit_game(game, "Error\n Map not surrounded by walls\n");
+			exit_game(game, "Error\nMap not surrounded by walls\n");
 		i++;
 	}
 	i = 0;
 	while (i < height)
 	{
 		if (game->map[i][0] != '1' || game->map[i][width - 1] != '1')
-			exit_game(game, "Error\n Map not surrounded by walls\n");
+			exit_game(game, "Error\nMap not surrounded by walls\n");
 		i++;
 	}
 }
@@ -63,7 +63,7 @@ void	check_walls(t_game *game, int height, int width)
 static void	check_entity_counts(t_game *game)
 {
 	if (game->p_count != 1 || game->e_count != 1 || game->c_count < 1)
-		exit_game(game, "Error\n Invalid number of P, E, or C\n");
+		exit_game(game, "Error\nInvalid number of P, E, or C\n");
 }
 
 void	validate_map(t_game *game)
@@ -81,7 +81,7 @@ void	validate_map(t_game *game)
 	while (game->map[i])
 	{
 		if (ft_strlen(game->map[i]) != width)
-			exit_game(game, "Error\n Map not rectangular\n");
+			exit_game(game, "Error\nMap not rectangular\n");
 		i++;
 	}
 	check_chars(game);
