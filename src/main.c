@@ -6,7 +6,7 @@
 /*   By: mel-hajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 03:28:51 by mel-hajj          #+#    #+#             */
-/*   Updated: 2025/03/24 06:24:40 by mel-hajj         ###   ########.fr       */
+/*   Updated: 2025/04/05 21:49:59 by mel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ void	check_extension(char *file)
 	if (len > 0 && file[len - 1] == '/')
 		basename = file + len;
 	len = ft_strlen(basename);
-	if (len < 5 || basename[0] == '.' || ft_strncmp(basename + len - 4, ".ber",
-			4) != 0)
+	if (len < 5 || ft_strncmp(basename + len - 4, ".ber", 4) != 0)
 		exit_game(NULL, "Error\nFile must have a valid .ber extension\n");
 }
 
