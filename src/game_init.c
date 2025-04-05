@@ -61,7 +61,7 @@ static void	load_textures(t_game *game, int *width, int *height)
 			width, height);
 	if (!game->wall_img || !game->floor_img || !game->player_img
 		|| !game->collect_img || !game->exit_img)
-		exit_game(game, "Error: Failed to load textures\n");
+		exit_game(game, "Error\n Failed to load textures\n");
 }
 
 void	init_game(t_game *game)
@@ -73,7 +73,7 @@ void	init_game(t_game *game)
 	game->win_ptr = mlx_new_window(game->mlx_ptr, game->width * 32, game->height
 			* 32, "So Long");
 	if (!game->win_ptr)
-		exit_game(game, "Error: Failed to create window\n");
+		exit_game(game, "Error\n Failed to create window\n");
 	game->moves = 0;
 	load_textures(game, &game->width, &game->height);
 }

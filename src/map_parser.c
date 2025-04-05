@@ -20,7 +20,7 @@ static int	count_lines(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		exit_game(NULL, "Error: Cannot open map file\n");
+		exit_game(NULL, "Error\n Cannot open map file\n");
 	lines = 0;
 	line = get_next_line(fd);
 	while (line)
