@@ -14,7 +14,6 @@
 # define SO_LONG_H
 
 # include "stdlib.h"
-# include "unistd.h"
 # include "mlx.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
